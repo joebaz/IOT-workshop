@@ -173,36 +173,36 @@ var App = (function (App, $) {
 	}
 
   App.loadSliders = function(callback) {
-    $("#solar").slider({
+    $("#solarSlider").slider({
       orientation: "horizontal",
       max: 100,
       value: 5,
       change: function (event, ui) {
         var num_plants = 10;
         var totalPower = ui.value * App.powerValues.solarOutput * num_plants
-        $('#solar_percent').val(totalPower)
-        $('#solar_bar').width((100*totalPower/20000000000) + "%")
+        $('#solarPercent').val(totalPower)
+        $('#solarBar').width((100*totalPower/20000000000) + "%")
       }
     });
-    $("#wind").slider({
+    $("#windSlider").slider({
       orientation: "horizontal",
       max: 100,
       value: 5,
       change: function (event, ui) {
         var num_plants = 200;
         var totalPower = ui.value * App.powerValues.windOutput * num_plants
-        $('#wind_percent').val(totalPower)
-        $('#wind_bar').width((100*totalPower/20000000000) + "%")
+        $('#windPercent').val(totalPower)
+        $('#windBar').width((100*totalPower/20000000000) + "%")
       }
     });
-    $("#nuclear").slider({
+    $("#nuclearSlider").slider({
       orientation: "horizontal",
       max: 100,
       value: 5,
       change: function (event, ui) {
         var totalPower = ui.value * App.powerValues.nuclearOutput
-        $('#nuclear_percent').val(totalPower)
-        $('#nuclear_bar').width((100*totalPower/20000000000) + "%")
+        $('#nuclearPercent').val(totalPower)
+        $('#nuclearBar').width((100*totalPower/20000000000) + "%")
       }
     });
   }

@@ -35,6 +35,51 @@
         <span class="ax_header_title">Developer Day App</span>
     </div>
 </header>
+
+<article>
+    <p>TARGET: <span class="targetMetric">200Gw</span></p>
+    <div id="chartContainer">
+        <div class="chartWrapper">
+            <div id="solarBar" class="bar"><p title="Solar Power">Solar</p></div>
+            <div id="windBar" class="bar"><p title="Wind Power">Wind</p></div>
+            <div id="nuclearBar" class="bar"><p title="Nuclear Power">Nuclear</p></div>
+        </div>
+    </div>
+    <table id="sliderbox"> 
+        <tr>
+            <th>Energy Type</th>
+            <th>Watts</th>
+        </tr>
+        <tr class="sliderrow">
+            <td>
+                <label>Solar</label>
+                <div id="solarSlider" class="slider"></div>
+            </td>
+            <td>
+                <input id="solarPercent" name="solar_percent">
+            </td>
+        </tr>
+        <tr class="sliderrow">
+            <td>
+                <label>Wind</label>
+                <div id="windSlider" class="slider"></div>
+            </td>
+            <td>
+                <input id="windPercent" name="wind_percent">
+            </td>
+        </tr>
+        <tr class="sliderrow">
+            <td>
+                <label>Nuclear</label>
+                <div id="nuclearSlider" class="slider"></div>
+            </td>
+            <td>
+                <input id="nuclearPercent" name="nuclear_percent">
+            </td>
+        </tr>
+    </table>
+</article>
+
 <div class="ax_box ax_ditems">
     <div class="ax_section_title">
         Data Items
@@ -51,49 +96,6 @@
         <tbody class="ditems_tbody">
         </tbody>
     </table>
-</div>
-<!-- <div class='ax_box ax_history'>
-</div>
-<div class="ax_box ax_alarms">
-    <div class="ax_section_title">
-        Alarms
-    </div>
-    <table class="ax_alarms_table">
-        <thead class="alarms_head">
-        <tr class="titleRow">
-            <th class="aTitle">Alarm</th>
-            <th class="aTitle">Severity</th>
-            <th class="aTitle">State</th>
-            <th class="aTitle">Time</th>
-        </tr>
-        </thead>
-        <tbody class="alarms_tbody">
-        </tbody>
-    </table>
-</div> -->
-
-<div id="sliderbox">
-  <table>
-    <tr>
-      <div id="chart-container">
-        <div id="solar_bar"></div>
-        <div id="wind_bar"></div>
-        <div id="nuclear_bar"></div>
-      </div>
-    </tr>
-    <tr>
-      <td><div id="solar"></div></td>
-      <td><input id="solar_percent"></td>
-    </tr>
-    <tr>
-      <td><div id="wind"></div></td>
-      <td><input id="wind_percent"></td>
-    </tr>
-    <tr>
-      <td><div id="nuclear"></div></td>
-      <td><input id="nuclear_percent"></td>
-    </tr>
-  </table>
 </div>
 
 <!-- End your site or application content here -->
