@@ -36,19 +36,19 @@
     </div>
 </header>
 
-<article>
-    <p>TARGET: <span class="targetMetric">200Gw</span></p>
+<div id="mainContainer">
+    <h1>Energy Throttling Tool</h1>
     <div id="chartContainer">
         <div class="chartWrapper">
-            <div id="solarBar" class="bar"><p title="Solar Power">Solar</p></div>
-            <div id="windBar" class="bar"><p title="Wind Power">Wind</p></div>
-            <div id="nuclearBar" class="bar"><p title="Nuclear Power">Nuclear</p></div>
+            <div id="solarBar" class="bar"><p title="Solar Power"></p></div>
+            <div id="windBar" class="bar"><p title="Wind Power"></p></div>
+            <div id="nuclearBar" class="bar"><p title="Nuclear Power"></p></div>
         </div>
     </div>
     <table id="sliderbox"> 
         <tr>
             <th>Energy Type</th>
-            <th>Watts</th>
+            <th>Gigawatts</th>
         </tr>
         <tr class="sliderrow">
             <td>
@@ -56,7 +56,7 @@
                 <div id="solarSlider" class="slider"></div>
             </td>
             <td>
-                <input id="solarPercent" name="solar_percent">
+                <input id="solarPercent" name="solar_percent" value="0">
             </td>
         </tr>
         <tr class="sliderrow">
@@ -65,7 +65,7 @@
                 <div id="windSlider" class="slider"></div>
             </td>
             <td>
-                <input id="windPercent" name="wind_percent">
+                <input id="windPercent" name="wind_percent" value="0">
             </td>
         </tr>
         <tr class="sliderrow">
@@ -74,27 +74,33 @@
                 <div id="nuclearSlider" class="slider"></div>
             </td>
             <td>
-                <input id="nuclearPercent" name="nuclear_percent">
+                <input id="nuclearPercent" name="nuclear_percent" value="0">
             </td>
         </tr>
-    </table>
-</article>
-
-<div class="ax_box ax_ditems">
-    <div class="ax_section_title">
-        Data Items
-    </div>
-    <table class="ax_ditems_table">
-        <thead class="ditems_head">
-        <tr class="titleRow">
-            <th class="dTitle">Data Item</th>
-            <th class="dTitle">Type</th>
-            <th class="dTitle">Value</th>
-            <th class="dTitle">Timestamp</th>
+        <tr id="totalGigawatts" class="sliderrowtotal">
+            <td class="totallabel">
+                <p>Total Gigawatts</p>
+            </td>
+            <td class="totalvalue">
+                <p id="placeholderTotal">0</p>
+            </td>
         </tr>
-        </thead>
-        <tbody class="ditems_tbody">
-        </tbody>
+        <tr id="targetGigawatts" class="sliderrowtotal">
+            <td class="totallabel">
+                <p>Target</p>
+            </td>
+            <td class="totalvalue">
+                <p id="targetTotal">200</p>
+            </td>
+        </tr>
+        <tr id="gigawattDifference" class="sliderrowtotal">
+            <td class="totallabel">
+                <p id="">Difference</p>
+            </td>
+            <td class="totalvalue">
+                <p id="placeholderDifference">-200</p>
+            </td>
+        </tr>
     </table>
 </div>
 

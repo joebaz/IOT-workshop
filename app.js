@@ -171,43 +171,72 @@ var App = (function (App, $) {
 		console.log(json.dataItemValues)
 		return json.dataItemValues
 	}
+  
+  // Our global variable for the target wattage
+  // Currently set to 20 billion watts
+  var targetWattage = 20000000000;
 
+  // Function for calculating the width of the stacked bar chart
+  App.calculateVal = function(id, plants, output, value) {
+    var energyPower = value * output * plants;
+    // console.log("value: " + value);
+    // console.log("output: " + output);
+    // console.log("plants: " + plants);
+    // console.log("energyPower: " + energyPower);
+    var getVal = $("#" + id + "Percent").val(energyPower);
+    var newResult = $("#" + id + "Bar").width((100 * energyPower / targetWattage) + "%");
+    return newResult;
+  }
+
+  // Function for formatting the values in the input fields
+  // and for adding up the values in the input fields
+  App.formatVal = function(id, value) {
+    console.log(id + " value: " + value);
+    var newValue = Math.round(value/100000000);
+    $("#" + id + "Percent").val(newValue);
+    
+    // Calculate totals
+    var solar = parseInt($("#solarPercent").val()); 
+    var wind = parseInt($("#windPercent").val());
+    var nuclear = parseInt($("#nuclearPercent").val());
+    var total = solar + wind + nuclear;
+    $("#placeholderTotal").html(total);
+
+    // Find out the difference 
+    var diff = parseInt(total - (targetWattage/100000000));
+    $("#placeholderDifference").html(diff);
+  }
+
+  // Function for handling the sliders
   App.loadSliders = function(callback) {
     $("#solarSlider").slider({
       orientation: "horizontal",
       max: 100,
-      value: 5,
+      value: 0,
       change: function (event, ui) {
-        var num_plants = 10;
-        var totalPower = ui.value * App.powerValues.solarOutput * num_plants
-        $('#solarPercent').val(totalPower)
-        $('#solarBar').width((100*totalPower/20000000000) + "%")
+        App.calculateVal("solar", 5, App.powerValues.solarOutput, ui.value);
+        App.formatVal("solar", $("#solarPercent").val());
       }
     });
     $("#windSlider").slider({
       orientation: "horizontal",
       max: 100,
-      value: 5,
+      value: 0,
       change: function (event, ui) {
-        var num_plants = 200;
-        var totalPower = ui.value * App.powerValues.windOutput * num_plants
-        $('#windPercent').val(totalPower)
-        $('#windBar').width((100*totalPower/20000000000) + "%")
+        App.calculateVal("wind", 400, App.powerValues.windOutput, ui.value);
+        App.formatVal("wind", $("#windPercent").val());
       }
     });
     $("#nuclearSlider").slider({
       orientation: "horizontal",
       max: 100,
-      value: 5,
+      value: 0,
       change: function (event, ui) {
-        var totalPower = ui.value * App.powerValues.nuclearOutput
-        $('#nuclearPercent').val(totalPower)
-        $('#nuclearBar').width((100*totalPower/20000000000) + "%")
+        App.calculateVal("nuclear", 1, App.powerValues.solarOutput, ui.value);
+        App.formatVal("nuclear", $("#nuclearPercent").val());
       }
     });
   }
-
-
 
   //function to populate the alarms table with data coming from web service requesting all the current alarms on the device
   App.populateAlarms=function(json){
